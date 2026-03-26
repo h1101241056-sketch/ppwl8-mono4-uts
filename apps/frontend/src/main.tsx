@@ -1,10 +1,22 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App2";
-import './index.css';
+// apps/frontend/src/main.tsx
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+// Routing sederhana berdasarkan path
+const path = window.location.pathname
+
+let App
+if (path === '/classroom') {
+  const { default: ClassroomApp } = await import('./App3')
+  App = ClassroomApp
+} else {
+  const { default: DefaultApp } = await import('./App2')
+  App = DefaultApp
+}
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
     <App />
-  </React.StrictMode>
-);
+  </StrictMode>
+)
