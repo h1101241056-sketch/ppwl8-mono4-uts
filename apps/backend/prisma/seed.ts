@@ -15,8 +15,8 @@ async function main() {
         name: "Jane Smith",
         email: "jane@example.com"
       }
-    ]
-  })
+    ],
+  });
 }
 
-main().finally(() => prisma.$disconnect())
+main().finally(() => prisma.$disconnect());
